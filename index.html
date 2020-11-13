@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジャンケン記録アプリ</title>
+    <!-- Bootstrapを使用 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+    <div id="app" class="border col-12">
+
+        <!-- dataプロパティのtitleを表示 -->
+        <br>
+        <h1>{{ title }}</h1>
+        <br>
+
+        <div class="form-group">
+            <label>ジャンケンの手を選んでください：</label>
+            <form v-on:submit.prevent>
+                <!-- ジャンケンの選択肢。結果をnewItemに格納 -->
+                <select id="mySelect" v-model="newItem">
+                    <option>ぐー</option>
+                    <option>ちょき</option>
+                    <option>ぱー</option>
+                </select>
+
+                <!-- <input type="number" v-model="newItem"> -->
+                <!-- 選択肢があり、ボタンが押されれば、addItem関数に値が渡る -->
+                <button v-on:click="addItem" class="btn btn-outline-primary">
+                    この手で勝負する
+                </button>
+            </form>
+        </div>
+
+        <ul>
+            <li v-for="(todo, index) in todos">
+                <input type="checkbox" v-model="todo.isDone">
+
+                <span v-bind:class="{ done: todo.isDone }">相手の手：{{ todo.aite }}　あなたの手：{{ todo.you }}</span><br>
+                <span v-bind:class="{ done: todo.isDone }">　　{{ todo.result }}</span>
+                <button v-on:click="deleteItem(index)">
+                    削除
+                </button>
+            </li>
+        </ul>
+
+        <hr>
+        <br>
+        <h3>dataプロパティの中の動き</h3>
+        <br>
+        <pre>{{$data}}</pre>
+        <br>
+        <hr>
+
+
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

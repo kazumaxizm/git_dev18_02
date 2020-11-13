@@ -1,0 +1,18 @@
+
+body {
+    width: 1200px;
+    margin-right: auto;
+    margin-left : auto;
+	background:#FFF url(../img/share/bg.gif) no-repeat left top;
+	font-family:Verdana, "ＭＳ Ｐゴシック", sans-serif;
+	/* font-size:80%; */
+}
+
+#app ul{
+    list-style: none;
+}
+
+#app li > span.done{
+    text-decoration: line-through;
+}
+
